@@ -415,12 +415,75 @@ footer { background: var(--paper); padding: 56px 32px 32px; font-size: 14px; }
 }
 
 @media (max-width: 900px) {
-  .hero-grid, .box-grid { grid-template-columns: 1fr; }
+  .hero-grid, .box-grid { grid-template-columns: 1fr; gap: 32px; }
   .features { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr 1fr; }
   .nav ul { display: none; }
-  .foot-grid { grid-template-columns: 1fr 1fr; }
+  .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
   section { padding: 72px 24px; }
+  .hero-grid { padding: 56px 24px 72px; }
+  .hero h1 { text-shadow: 3px 3px 0 var(--gold), 6px 6px 0 var(--ink); }
+  .hero p.lead { font-size: 19px; }
+  .hero-bullets li { font-size: 20px; }
+  .hero-mascot img { max-width: 320px; }
+  .kit-card { padding: 28px; box-shadow: 8px 8px 0 var(--ink); }
+  .kit-card .stamp {
+    width: 88px; height: 88px;
+    font-size: 11px;
+    top: -16px; right: -16px;
+  }
+  .box-illustration img { max-width: 280px; }
+  .cta-band { padding: 72px 24px; }
+  .cta-band .ghost-mascot { width: 220px; right: -30px; bottom: -30px; }
+  .feature { box-shadow: 4px 4px 0 var(--ink); }
+  .feature:hover { box-shadow: 6px 6px 0 var(--ink); }
+}
+
+@media (max-width: 600px) {
+  section { padding: 56px 20px; }
+  .nav-inner { padding: 12px 20px; gap: 12px; }
+  .brand { font-size: 22px; }
+  .nav-cta { padding: 8px 14px; font-size: 13px; }
+  .tape { font-size: 11px; letter-spacing: 0.12em; }
+  .hero-grid { padding: 48px 20px 64px; }
+  .hero h1 { text-shadow: 2px 2px 0 var(--gold), 4px 4px 0 var(--ink); }
+  .hero p.lead { font-size: 17px; }
+  .hero-bullets li { font-size: 17px; }
+  .hero-cta-row { flex-direction: column; align-items: stretch; }
+  .hero-cta-row .btn-primary,
+  .hero-cta-row .btn-ghost { justify-content: center; padding: 14px 22px; font-size: 16px; }
+  .hero-mascot img { max-width: 260px; }
+  .features { gap: 32px; margin-top: 44px; }
+  .feature { padding: 22px; }
+  .feature-num { width: 38px; height: 38px; font-size: 18px; top: -14px; left: -14px; }
+  .feature h3 { font-size: 22px; }
+  .steps { grid-template-columns: 1fr; }
+  .step { border-right: none; border-bottom: 2px solid var(--ink); }
+  .step:last-child { border-bottom: none; }
+  .step-num { font-size: 64px; }
+  .step h4 { font-size: 20px; }
+  .kit-card { padding: 22px; box-shadow: 6px 6px 0 var(--ink); }
+  .kit-card .stamp {
+    width: 76px; height: 76px;
+    font-size: 10px;
+    top: -14px; right: -14px;
+    padding: 6px;
+  }
+  .kit-row { padding: 14px 0; }
+  .kit-row .qty { font-size: 36px; }
+  .kit-row .lbl { font-size: 17px; margin-left: 12px; }
+  .kit-row .px { font-size: 11px; }
+  .box-illustration img { max-width: 220px; }
+  .faq-q { font-size: 17px; padding: 18px 18px; }
+  .faq-a { font-size: 15px; }
+  .faq-item.open .faq-a { padding: 0 18px 18px; max-height: 480px; }
+  .cta-band { padding: 60px 20px; }
+  .cta-band .price { font-size: 20px; }
+  .cta-band .meta { font-size: 11px; letter-spacing: 0.14em; }
+  .cta-band .ghost-mascot { width: 180px; opacity: 0.12; }
+  footer { padding: 40px 20px 24px; }
+  .foot-grid { grid-template-columns: 1fr; gap: 28px; }
+  .foot-bot { flex-direction: column; gap: 10px; text-align: left; }
 }
 </style>
 </head>
