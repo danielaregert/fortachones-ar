@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fortachones — Tornillos Parcha Fácil para cubiertas sin cámara</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link rel="icon" type="image/x-icon" href="assets/fortacho-1.png">
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue: #2a6db0;
+  --blue-deep: #1d4f82;
+  --blue-ink: #0f2a48;
+  --cream: #f4ecd8;
+  --paper: #faf6ec;
+  --gold: #f5c542;
+  --gold-deep: #c98a14;
+  --ink: #0c0f12;
+  --steel: #6f7a82;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+.serif { font-family: "Alfa Slab One", "Rockwell", Georgia, serif; }
+.mono  { font-family: "JetBrains Mono", monospace; }
+
+/* TICKER */
+.tape {
+  background: var(--blue);
+  color: var(--cream);
+  padding: 10px 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--ink);
+  overflow: hidden;
+}
+.tape-track {
+  display: flex;
+  gap: 48px;
+  white-space: nowrap;
+  width: max-content;
+  animation: slide 40s linear infinite;
+}
+@keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* NAV */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--paper);
+  border-bottom: 2px solid var(--ink);
+}
+.nav-inner {
+  max-width: 1240px; margin: 0 auto;
+  padding: 14px 32px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+.brand {
+  font-family: "Alfa Slab One", serif;
+  font-size: 26px; color: var(--ink); text-decoration: none;
+}
+.brand .dot { color: var(--blue); }
+.nav ul { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; }
+.nav a { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 15px; }
+.nav a:hover { color: var(--blue); }
+.nav-cta {
+  background: var(--ink); 
+  padding: 10px 18px; border-radius: 999px;
+  text-decoration: none; font-weight: 700; font-size: 14px;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: transform .15s;
+}
+
+a.nav-cta  {
+color: var(--paper);
+}
+.nav-cta:hover { transform: translateY(-1px); }
+
+/* HERO */
+.hero {
+  position: relative;
+  background: var(--blue);
+  color: var(--paper);
+  border-bottom: 3px solid var(--ink);
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 55% at 30% 50%, var(--paper) 0%, var(--paper) 55%, transparent 62%);
+  z-index: 0;
+}
+.hero-grid {
+  position: relative; z-index: 1;
+  max-width: 1240px; margin: 0 auto;
+  padding: 80px 32px 100px;
+  display: grid; grid-template-columns: 1.15fr 1fr;
+  gap: 40px; align-items: center;
+}
+.kicker {
+  display: inline-block;
+  background: var(--ink); color: var(--gold);
+  padding: 6px 14px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-family: "Alfa Slab One", serif;
+  font-size: clamp(56px, 9vw, 132px);
+  line-height: 0.92;
+  margin: 0 0 20px;
+  color: var(--ink);
+  text-shadow: 4px 4px 0 var(--gold), 8px 8px 0 var(--ink);
+}
+.hero p.lead {
+  font-size: 22px;
+  color: var(--blue-ink);
+  max-width: 520px;
+  margin: 0 0 32px;
+  line-height: 1.4;
+}
+.hero-bullets {
+  list-style: none; padding: 0; margin: 0 0 36px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.hero-bullets li {
+  font-family: "Alfa Slab One", serif;
+  font-size: 24px; color: var(--blue-ink);
+  display: flex; align-items: center; gap: 14px;
+}
+.hero-bullets li::before {
+  content: ""; width: 14px; height: 14px;
+  background: var(--ink); border-radius: 50%;
+  display: inline-block;
+}
+.hero-cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--ink); color: var(--gold);
+  padding: 16px 28px; border-radius: 4px;
+  font-family: "Alfa Slab One", serif; font-size: 18px;
+  text-decoration: none; border: 3px solid var(--ink);
+  display: inline-flex; align-items: center; gap: 10px;
+  transition: transform .15s, box-shadow .15s;
+  box-shadow: 4px 4px 0 var(--gold-deep);
+}
+.btn-primary:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--gold-deep); }
+.btn-ghost {
+  transition: 1s all ease;
+  background: white; color: var(--ink);
+  padding: 16px 28px; border-radius: 4px;
+  font-family: "Alfa Slab One", serif; font-size: 18px;
+  text-decoration: none; border: 3px solid var(--ink);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.btn-ghost:hover { background: var(--ink); color: var(--paper); }
+
+.hero-mascot {
+  position: relative;
+  display: flex; justify-content: center; align-items: center;
+}
+.hero-mascot img {
+  width: 100%; max-width: 460px; height: auto;
+  filter: drop-shadow(0 18px 0 rgba(0,0,0,.25));
+  animation: flex 4s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+@keyframes flex {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50%      { transform: scale(1.03) rotate(-1deg); }
+}
+.spark {
+  position: absolute;
+  font-family: "Alfa Slab One", serif;
+  color: var(--gold);
+  -webkit-text-stroke: 2px var(--ink);
+  font-size: 28px;
+  animation: pulse 2s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  50%      { transform: scale(1.25) rotate(8deg); opacity: 0.85; }
+}
+
+/* SECTIONS */
+section { padding: 100px 32px; border-bottom: 2px solid var(--ink); }
+.wrap { max-width: 1240px; margin: 0 auto; }
+.eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--blue); margin: 0 0 14px;
+}
+.section-title {
+  font-family: "Alfa Slab One", serif;
+  font-size: clamp(40px, 5vw, 72px);
+  line-height: 0.95; margin: 0 0 18px;
+  color: var(--ink); text-wrap: balance;
+}
+.section-sub {
+  font-size: 19px; color: var(--blue-ink);
+  max-width: 640px; line-height: 1.5; margin: 0;
+}
+
+.features-section { background: var(--cream); }
+.features {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px; margin-top: 56px;
+}
+.feature {
+  background: var(--paper); border: 2px solid var(--ink);
+  padding: 28px; position: relative;
+  box-shadow: 6px 6px 0 var(--ink);
+  transition: transform .2s, box-shadow .2s;
+}
+.feature:hover { transform: translate(-3px,-3px); box-shadow: 9px 9px 0 var(--ink); }
+.feature-num {
+  position: absolute; top: -18px; left: -18px;
+  background: var(--gold); color: var(--ink);
+  font-family: "Alfa Slab One", serif; font-size: 22px;
+  width: 44px; height: 44px;
+  border: 2px solid var(--ink); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.feature h3 {
+  font-family: "Alfa Slab One", serif;
+  font-size: 26px; line-height: 1; margin: 8px 0 14px;
+}
+.feature p { margin: 0; line-height: 1.5; color: #2a3138; }
+.feature .glyph {
+  width: 56px; height: 56px;
+  border: 2px solid var(--ink);
+  background: var(--blue); color: var(--paper);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 14px;
+}
+
+/* HOW */
+.how-section { background: var(--paper); }
+.steps {
+  margin-top: 56px;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border: 3px solid var(--ink); background: var(--ink);
+}
+.step {
+  background: var(--paper);
+  padding: 32px 28px 36px;
+  border-right: 2px solid var(--ink);
+}
+.step:last-child { border-right: none; }
+.step-num {
+  font-family: "Alfa Slab One", serif;
+  font-size: 84px; line-height: 0.8;
+  color: var(--blue);
+  -webkit-text-stroke: 2px var(--ink);
+  margin: 0 0 18px;
+}
+.step h4 {
+  font-family: "Alfa Slab One", serif;
+  font-size: 22px; margin: 0 0 10px; line-height: 1.05;
+}
+.step p { margin: 0; line-height: 1.45; font-size: 15px; }
+
+/* BOX */
+.box-section {
+  background: var(--blue); color: var(--paper);
+  position: relative; overflow: hidden;
+}
+.box-section::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+.box-section .section-title { color: var(--paper); }
+.box-section .section-sub { color: rgba(255,255,255,.85); }
+.box-section .eyebrow { color: var(--gold); }
+.box-grid {
+  margin-top: 56px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 48px; align-items: center;
+  position: relative; z-index: 1;
+}
+.kit-card {
+  background: var(--paper); color: var(--ink);
+  border: 3px solid var(--ink); padding: 36px;
+  box-shadow: 12px 12px 0 var(--ink);
+  position: relative;
+}
+.kit-card .stamp {
+  position: absolute; top: -22px; right: -22px;
+  background: var(--gold); color: var(--ink);
+  border: 2px solid var(--ink); border-radius: 50%;
+  width: 110px; height: 110px;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+  font-family: "Alfa Slab One", serif;
+  font-size: 13px; line-height: 1.05;
+  transform: rotate(12deg); padding: 8px;
+}
+.kit-row {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: 18px 0;
+  border-bottom: 2px dashed var(--ink);
+}
+.kit-row:last-child { border: none; padding-bottom: 0; }
+.kit-row .qty {
+  font-family: "Alfa Slab One", serif;
+  font-size: 48px; color: var(--blue); line-height: 1;
+}
+.kit-row .lbl {
+  font-family: "Alfa Slab One", serif;
+  font-size: 22px; flex: 1; margin-left: 18px;
+}
+.kit-row .px { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--steel); }
+.box-illustration { display: flex; justify-content: center; align-items: center; }
+.box-illustration img { max-width: 380px; width: 100%; height: auto; }
+
+/* FAQ */
+.faq-section { background: var(--cream); }
+.faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 12px; }
+.faq-item {
+  border: 2px solid var(--ink); background: var(--paper); overflow: hidden;
+}
+.faq-q {
+  width: 100%; text-align: left;
+  background: transparent; border: 0;
+  padding: 22px 24px;
+  font-family: "Alfa Slab One", serif; font-size: 20px;
+  cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  color: var(--ink);
+}
+.faq-q .chev {
+  font-family: "Alfa Slab One", serif; font-size: 22px;
+  color: var(--blue); transition: transform .25s;
+}
+.faq-item.open .faq-q .chev { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .3s ease;
+  padding: 0 24px;
+  font-size: 16px; line-height: 1.55; color: #2a3138;
+}
+.faq-item.open .faq-a { max-height: 320px; padding: 0 24px 22px; }
+
+/* CTA BAND */
+.cta-band {
+  background: var(--ink); color: var(--paper);
+  text-align: center; padding: 90px 32px;
+  border-bottom: 2px solid var(--ink);
+  position: relative; overflow: hidden;
+}
+.cta-band .ghost-mascot {
+  position: absolute; right: -40px; bottom: -40px;
+  width: 320px; opacity: 0.15;
+  filter: brightness(0) invert(1);
+  pointer-events: none;
+}
+.cta-band h2 {
+  font-family: "Alfa Slab One", serif;
+  font-size: clamp(40px, 6vw, 84px);
+  margin: 0 0 16px; line-height: 0.95;
+  color: var(--paper);
+  text-shadow: 4px 4px 0 var(--blue);
+  position: relative; z-index: 1;
+}
+.cta-band .price {
+  font-family: "Alfa Slab One", serif;
+  font-size: 28px; color: var(--gold);
+  margin: 0 0 36px;
+  position: relative; z-index: 1;
+}
+.cta-band .price s { color: var(--steel); margin-right: 12px; font-size: 22px; }
+.cta-band .meta {
+  margin-top: 28px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--steel);
+  position: relative; z-index: 1;
+}
+
+/* FOOTER */
+footer { background: var(--paper); padding: 56px 32px 32px; font-size: 14px; }
+.foot-grid {
+  max-width: 1240px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px; padding-bottom: 36px;
+  border-bottom: 2px solid var(--ink);
+}
+.foot-grid h5 {
+  font-family: "Alfa Slab One", serif;
+  font-size: 14px; letter-spacing: 0.05em;
+  margin: 0 0 14px; text-transform: uppercase;
+}
+.foot-grid ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.foot-grid a { color: var(--ink); text-decoration: none; }
+.foot-grid a:hover { color: var(--blue); }
+.foot-bot {
+  max-width: 1240px; margin: 24px auto 0;
+  display: flex; justify-content: space-between;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--steel);
+}
+
+@media (max-width: 900px) {
+  .hero-grid, .box-grid { grid-template-columns: 1fr; }
+  .features { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .nav ul { display: none; }
+  .foot-grid { grid-template-columns: 1fr 1fr; }
+  section { padding: 72px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="tape">
+  <div class="tape-track">
+    <span>★ Industria Argentina</span>
+    <span>★ Sistema Parcha Fácil</span>
+    <span>★ Cubiertas sin cámara</span>
+    <span>★ Sin pegamento</span>
+    <span>★ 5 chicos + 5 grandes</span>
+    <span>★ Enroscás y listo</span>
+    <span>★ Industria Argentina</span>
+    <span>★ Sistema Parcha Fácil</span>
+    <span>★ Cubiertas sin cámara</span>
+    <span>★ Sin pegamento</span>
+    <span>★ 5 chicos + 5 grandes</span>
+    <span>★ Enroscás y listo</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">Fortachones<span class="dot">.</span></a>
+    <ul>
+      <li><a href="#producto">Producto</a></li>
+      <li><a href="#como">Cómo se usa</a></li>
+      <li><a href="#caja">La caja</a></li>
+      <li><a href="#faq">Preguntas</a></li>
+    </ul>
+    <a href="#comprar" class="nav-cta">Próximamente <span style="font-size:16px">→</span></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-grid">
+    <div>
+      <span class="kicker">Industria Argentina · Sistema Parcha Fácil</span>
+      <h1>Fortachones</h1>
+      <p class="lead">
+        Tornillos de reparación de emergencia para cubiertas sin cámara.
+        Enroscás, sella al instante y llegás al taller. Sin pegamento, sin desmontar la rueda.
+      </p>
+      <ul class="hero-bullets">
+        <li>5 tornillos chicos · 1 a 4 mm</li>
+        <li>5 tornillos grandes · 2 a 6 mm</li>
+      </ul>
+      <div class="hero-cta-row">
+        <a href="#comprar" class="btn-primary">Pedir mi caja <span>→</span></a>
+        <a href="#como" class="btn-ghost">Ver cómo se usa</a>
+      </div>
+    </div>
+    <div class="hero-mascot">
+      <span class="spark" style="top:8%; left:6%;">★</span>
+      <span class="spark" style="top:20%; right:4%; animation-delay:.4s;">✦</span>
+      <span class="spark" style="bottom:18%; left:2%; animation-delay:.9s;">✶</span>
+      <span class="spark" style="bottom:8%; right:10%; animation-delay:1.3s;">★</span>
+      <img src="assets/fortacho-1.png" alt="Fortacho — la mascota de Fortachones" />
+    </div>
+  </div>
+</header>
+
+<!-- FEATURES -->
+<section id="producto" class="features-section">
+  <div class="wrap">
+    <p class="eyebrow">// Por qué Fortachones</p>
+    <h2 class="section-title">El pinchazo no te arruina<br/>el día. Te lo bancás.</h2>
+    <p class="section-sub">
+      Reparación de emergencia para conductores que no pueden esperar al auxilio.
+      Te saca del paso para llegar tranquilo al taller. Funcionan en monopatines eléctricos, motos, autos y camionetas.
+    </p>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-num">01</div>
+        <div class="glyph">
+          <svg viewBox="0 0 32 32" width="28" height="28">
+            <polygon points="14,2 6,18 14,18 12,30 24,12 16,12 18,2" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Solución de emergencia</h3>
+        <p>Sacás el objeto punzante, enroscás el tornillo al ras y llegás al taller. Sin pegamento, sin desmontar la rueda.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-num">02</div>
+        <div class="glyph">
+          <svg viewBox="0 0 32 32" width="28" height="28">
+            <path d="M16 3 L28 8 V17 C28 23 22 28 16 30 C10 28 4 23 4 17 V8 Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M11 16 l4 4 l7 -8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Sella la fuga</h3>
+        <p>Núcleo metálico recubierto en goma técnica T7000. Al enroscarse, la goma se expande y frena la fuga lenta hasta que llegues al mecánico.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-num">03</div>
+        <div class="glyph">
+          <svg viewBox="0 0 32 32" width="28" height="28">
+            <rect x="3" y="6" width="26" height="20" fill="none" stroke="currentColor" stroke-width="2.5"/>
+            <line x1="3" y1="13" x2="29" y2="13" stroke="currentColor" stroke-width="2.5"/>
+            <line x1="3" y1="19" x2="29" y2="19" stroke="currentColor" stroke-width="2.5"/>
+            <circle cx="16" cy="16" r="2.5" fill="currentColor"/>
+          </svg>
+        </div>
+        <h3>Industria Argentina</h3>
+        <p>Fabricados en San Martín, Buenos Aires, desde hace casi 40 años. De acá pal mundo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="como" class="how-section">
+  <div class="wrap">
+    <p class="eyebrow">// Cómo se usa</p>
+    <h2 class="section-title">Cuatro pasos. Cinco minutos.<br/>Cero gomería.</h2>
+    <p class="section-sub">
+      Sin pegamento, sin herramientas complejas. Demasiado simple para ser verdad.
+    </p>
+    <div class="steps">
+      <div class="step">
+        <p class="step-num">01</p>
+        <h4>Encontrá el pinchazo</h4>
+        <p>Inflá la rueda y escuchá. Marcá el agujero con tiza o un poco de saliva.</p>
+      </div>
+      <div class="step">
+        <p class="step-num">02</p>
+        <h4>Sacá el objeto punzante</h4>
+        <p>Removés el clavo o tornillo que pinchó la cubierta. Solo sirve si la perforación está en la banda de rodadura, no en el lateral.</p>
+      </div>
+      <div class="step">
+        <p class="step-num">03</p>
+        <h4>Elegí el tornillo</h4>
+        <p>Chico para 1 a 4 mm. Grande para 2 a 6 mm. Sacalo de su estuche individual.</p>
+      </div>
+      <div class="step">
+        <p class="step-num">04</p>
+        <h4>Enroscá al ras y andá</h4>
+        <p>Enroscás el tornillo hasta dejarlo al ras de la cubierta. Sella la fuga al instante.</p>
+        <p>Volvés a inflar y manejás directo al taller para la reparación definitiva.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOX -->
+<section id="caja" class="box-section">
+  <div class="wrap">
+    <p class="eyebrow">// Qué hay adentro</p>
+    <h2 class="section-title">Una caja. Diez<br/>reparaciones.</h2>
+    <p class="section-sub">
+      Cinco tornillos chicos para pinchazos finos. Cinco grandes para perforaciones estándar.
+      Cada uno en su estuche individual, listo para usar.
+    </p>
+    <div class="box-grid">
+      <div class="kit-card">
+        <div class="stamp">10<br/>REPA<br/>RACIONES</div>
+        <div class="kit-row">
+          <span class="qty">5</span>
+          <span class="lbl">Tornillos chicos</span>
+          <span class="px">Ø 1–4 mm</span>
+        </div>
+        <div class="kit-row">
+          <span class="qty">5</span>
+          <span class="lbl">Tornillos grandes</span>
+          <span class="px">Ø 2–6 mm</span>
+        </div>
+        <div class="kit-row">
+          <span class="qty">∞</span>
+          <span class="lbl">Bronca al pinchazo</span>
+          <span class="px">Incluido</span>
+        </div>
+      </div>
+      <div class="box-illustration">
+        <img src="assets/fortacho-1.png" alt="Fortacho posando" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="faq-section">
+  <div class="wrap">
+    <p class="eyebrow">// Preguntas frecuentes</p>
+    <h2 class="section-title">Lo que todo el mundo<br/>quiere saber.</h2>
+    <div class="faq-list" id="faq-list">
+      <div class="faq-item open">
+        <button class="faq-q"><span>¿Funciona en cualquier cubierta sin cámara?</span><span class="chev">+</span></button>
+        <div class="faq-a"><p>Sí, en neumáticos tubeless de monopatines eléctricos, motos, autos y camionetas. Solo se aplica en la banda de rodadura — no en los laterales — y no necesitás desmontar la rueda.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>¿Cuánto tarda la reparación?</span><span class="chev">+</span></button>
+        <div class="faq-a"><p>Entre 5 y 10 minutos a la vera del camino. Retirás el objeto punzante, elegís el tamaño del tornillo y lo atornillás al ras de la cubierta. Listo para llegar al taller.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>¿Qué trae la caja?</span><span class="chev">+</span></button>
+        <div class="faq-a"><p>5 tornillos chicos (1 a 4 mm) para pinchazos finos y 5 tornillos grandes (2 a 6 mm) para perforaciones estándar. Cada uno con su estuche plástico individual. Total: 10 reparaciones por caja.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>¿Es una solución definitiva o de emergencia?</span><span class="chev">+</span></button>
+        <div class="faq-a"><p>Es una solución de emergencia, no una reparación permanente. Sirve para frenar fugas lentas y permitirte llegar al taller sin quedarte tirado. Usado como solución definitiva puede dañar la estructura interna de la cubierta — siempre llevala a un mecánico para la reparación final.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>¿Necesito pegamento o herramientas especiales?</span><span class="chev">+</span></button>
+        <div class="faq-a"><p>No. El sistema Parcha Fácil es de aplicación directa: enroscás el tornillo al ras y listo. Sin adhesivos, sin punzones, sin insertores. Cada tornillo viene en su estuche individual para que se mantenga limpio y la goma intacta hasta usarlo.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>¿Cómo se entrega? ¿Tienen local físico?</span><span class="chev">+</span></button>
+        <div class="faq-a"><p>Tenemos puntos de retiro en CABA y en Wilde. Próximamente envíos a todo el país (correo) y envíos en el día (CABA)</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="comprar" class="cta-band">
+  <img class="ghost-mascot" src="assets/fortacho.png" alt="" aria-hidden="true" />
+  <h2>Llevátela.</h2>
+  <p class="price">Envíos a todo el país por Mercado Envíos</p>
+  <a href="#" class="btn-primary" style="background:var(--gold); color:var(--ink); box-shadow:4px 4px 0 var(--blue);">
+    Próximamente <span>→</span>
+  </a>
+  <p class="meta">Lanzamiento próximo · Próximamente envío gratis en CABA · Pronto al interior</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div>
+      <span class="brand" style="font-size:28px;">Fortachones<span class="dot" style="color:var(--blue);">.</span></span>
+      <p style="margin-top:14px; max-width:360px; line-height:1.5;">
+        Sistema Parcha Fácil — tornillos de reparación para cubiertas sin cámara.
+        Industria Argentina. Hechos en San Martín, Buenos Aires.
+      </p>
+    </div>
+    <div>
+      <h5>Producto</h5>
+      <ul>
+        <li><a href="#producto">Características</a></li>
+        <li><a href="#como">Cómo se usa</a></li>
+        <li><a href="#caja">La caja</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Distribución</h5>
+      <ul>
+        <li><a href="#">Mayoristas</a></li>
+        <li><a href="#">Gomerías</a></li>
+        <li><a href="#">Lubricentros</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Contacto</h5>
+      <ul>
+        <li><a href="mailto:hola@fortachones.com.ar">hola@fortachones.com.ar</a></li>
+        <li><a href="#">+54 11 4xxx-xxxx</a></li>
+        <li><a href="#">@fortachones</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bot">
+    <span>© 2026 Fortachones · Industria Argentina</span>
+
+    <span>Hecho con bronca y goma técnica T7000</span>
+  </div>
+</footer>
+
+<script>
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var item = btn.closest('.faq-item');
+    var wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i){ i.classList.remove('open'); });
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+</script>
+
+</body>
+</html>
